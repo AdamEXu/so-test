@@ -26,5 +26,5 @@ ENV FLASK_ENV=production
 RUN pip install --no-cache-dir gunicorn
 
 # Run gunicorn - use PORT env var if available, default to 5000
-CMD gunicorn --bind 0.0.0.0:${PORT:-5000} --workers 4 app:app
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-5000} --workers 4 app:app"]
 
