@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import datetime
 import os
 
@@ -11,6 +11,12 @@ def index():
     agent = request.headers.get('User-Agent')
     return render_template('index.html', server=server, ip=ip, agent=agent)
     
+@app.route('/config')
+def config():
+    return jsonify({
+        "message": "Config goes here."
+    })
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
